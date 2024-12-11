@@ -1,0 +1,304 @@
+  @font-face {
+      font-family: 'iranSans';
+      src: url(../fonts/IRANSans/woff/IRANSansWeb.woff);
+  }
+
+  * {
+      font-family: 'iranSans';
+      direction: rtl;
+      box-sizing: border-box;
+      /* اضافه شده برای مدیریت بهتر اندازه‌ها */
+  }
+
+  :root {
+      --mainColor: #393E46;
+      --whiteColor: #F5F7F8;
+      --blackColor: #000000;
+      --borderColor: #dfe1e5;
+      --greenColor: #0ac630;
+      --unreadMessage: #c4c9cc;
+      --grayColor: #707579;
+  }
+
+  html {
+      font-size: 62.5%;
+      scroll-behavior: smooth;
+  }
+
+  body {
+      font-weight: 400;
+      overflow: hidden;
+      margin: 0;
+      /* حذف حاشیه پیش‌فرض */
+  }
+
+  main {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      /* ارتفاع 100vh برای نمایش کامل */
+  }
+
+  .right-side {
+      max-width: 42rem;
+      min-width: 41rem;
+      background-color: #26355D;
+      border-right: .1rem solid var(--borderColor);
+      box-shadow: 0 .1rem .1rem .1rem rgba(0 0 0 / .05);
+  }
+
+  .header-container {
+      padding: 1rem;
+      min-height: 3.5rem;
+  }
+
+  .header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+  }
+
+  .header .toggle-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      cursor: pointer;
+      color: #f1f0f0;
+      font-size: 15px;
+      transition: background-color .3s;
+  }
+
+  .header .toggle-button:hover {
+      background-color: #64357045;
+  }
+
+  .header .search-box {
+      border: .1rem solid var(--borderColor);
+      border-radius: 2.2rem;
+      width: 100%;
+      padding: 1.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+  }
+
+  .header .search-box i {
+      color: #f1f0f0;
+      font-size: 15px;
+  }
+
+  .header .search-box input {
+      border: none;
+      outline: none;
+      width: 100%;
+      background-color: #26355D;
+      color: #F5F7F8;
+  }
+
+  .header .search-box input::placeholder {
+      color: #707579;
+  }
+
+  .body-container {
+      flex-grow: 1;
+      /* اجازه می‌دهد تا این بخش فضای باقی‌مانده را پر کند */
+      overflow-y: auto;
+      /* اسکرول عمودی */
+      padding: 0 .5rem;
+  }
+
+  .chat-list {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .chat-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: background-color .3s;
+  }
+
+  .chat-box:hover {
+      background-color: hsla(207, 4%, 46%, .08);
+  }
+
+  .chat-box .chat-details .chat-title h3,
+  .chat-box .chat-msg {
+      color: #f1f0f0;
+  }
+
+  .chat-box .chat-details .chat-title span {
+      color: #FDB827;
+  }
+
+  .chat-img {
+      width: 5.4rem;
+      height: 5.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .chat-img img {
+      border-radius: 50%;
+      max-width: 100%;
+      object-fit: cover;
+  }
+
+  .details {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+  }
+
+  .details h3,
+  .details #lastSeen {
+      color: #f1f0f0;
+  }
+
+  .details #time-detail {
+      color: #FDB827;
+  }
+
+  .sent-message {
+      text-align: right;
+      margin: 10px 0;
+      background-color: #F5F7F8;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 80%;
+      display: inline-block;
+      align-self: flex-end;
+  }
+
+  .sent-message p {
+      color: rgb(14, 14, 14);
+      font-size: 16px;
+      font-weight: 500;
+  }
+
+  .sent-message .time-detail {
+      color: #FDB827;
+      font-size: 10px;
+      font-weight: 600;
+  }
+
+  .received-message {
+      text-align: left;
+      margin: 10px 0;
+      background-color: #f1f0f0;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 70%;
+      display: inline-block;
+      align-self: flex-start;
+  }
+
+  .content {
+      flex-grow: 1;
+      /* اجازه می‌دهد تا این بخش فضای باقی‌مانده را پر کند */
+      background: rgb(38, 53, 93);
+      background: linear-gradient(90deg, rgba(38, 53, 93, 1) 0%, rgba(63, 83, 135, 1) 35%, rgba(71, 98, 171, 1) 100%);
+      position: relative;
+  }
+
+  .container {
+      transition: all .5s ease;
+      opacity: 1;
+      /* تغییر به 1 برای نمایش */
+      padding: 1rem;
+      /* اضافه کردن padding */
+  }
+
+  .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - 10rem);
+      /* ارتفاع چت-container با توجه به ارتفاع نوار پیام */
+      overflow-y: auto;
+      /* اسکرول عمودی */
+  }
+
+  .message-box {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      width: 90%;
+  }
+
+  .message-content {
+      position: relative;
+      background-color: var(--whiteColor);
+      border-radius: 1rem;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+  }
+
+  .message-content input {
+      height: 3.7rem;
+      font-size: 1.6rem;
+      width: 100%;
+      padding: 1rem;
+      outline: none;
+      border: none;
+  }
+
+  .micro {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      background-color: #3a65db;
+      color: #F5F7F8;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+  }
+
+  .fa-microphone,
+  .fa-paperclip,
+  .fa-smile {
+      color: #26355D;
+      font-size: 15px;
+  }
+
+  .chatConteiner-details {
+      background-color: #f1f0f0;
+      max-width: 100%;
+      width: 60%;
+      padding: 15px;
+      border-radius: 8px;
+      display: none;
+  }
+
+
+  .chatConteiner-details.visible {
+      display: block;
+  }
+
+  .chatConteiner-details h2 {
+      color: #707579;
+  }
+
+  .chatConteiner-details p {
+      color: #26355D;
+  }
+
+  .chatConteiner-details span {
+      color: #FDB827;
+  }
